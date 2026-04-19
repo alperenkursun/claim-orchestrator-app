@@ -65,6 +65,21 @@ export const ClosedSchema = z.object({
   completionDate: z.string(),
 });
 
+export const InformationNoteSchema = z.object({
+  title: z.literal("Information Note"),
+  status: z.string(),
+  note: z.string(),
+  id: z.string().optional(),
+});
+
+export const AdditionalAttachmentSchema = z.object({
+  title: z.literal("Additional Attachment"),
+  status: z.string(),
+  fileName: z.string(),
+  fileSize: z.string(),
+  id: z.string().optional(),
+});
+
 export const ProcessDetailSchema = z.discriminatedUnion("title", [
   TowingServiceSchema,
   ClaimNotificationSchema,
@@ -74,6 +89,8 @@ export const ProcessDetailSchema = z.discriminatedUnion("title", [
   DeductionReasonSchema,
   PaymentInformationSchema,
   ClosedSchema,
+  InformationNoteSchema,
+  AdditionalAttachmentSchema,
 ]);
 
 export const ClaimDataSchema = z.object({
