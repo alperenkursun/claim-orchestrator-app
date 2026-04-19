@@ -11,7 +11,7 @@ export default function ClaimTimeline({ details }: ClaimTimelineProps) {
       <h2 className="text-2xl font-bold text-slate-800 mb-8 px-4 md:px-0">Process History</h2>
       
       <div className="relative">
-        <div className="hidden md:block absolute left-[28px] top-4 bottom-0 w-[2px] bg-slate-200" />
+        <div className="hidden md:block absolute left-7 top-4 bottom-0 w-0.5 bg-slate-200" />
         
         <div className="flex flex-col gap-2">
           {details.map((step, index) => {
