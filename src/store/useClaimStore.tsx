@@ -7,12 +7,17 @@ interface ClaimState {
   setClaimData: (data: ClaimDataType) => void;
   addNode: (index: number, node: ProcessDetailType) => void;
   removeNode: (id: string) => void;
+  updateNode: (title: string, newData: Partial<ProcessDetailType>) => void;
 }
 
 export const useClaimStore = create<ClaimState>((set) => ({
   claimData: null,
   isLoading: true,
-  setClaimData: (data) => set({ claimData: data, isLoading: false }),
+  
+  setClaimData: (data) => set({ 
+    claimData: data, 
+    isLoading: false 
+  }),
   
   addNode: (index, node) => set((state) => {
     if (!state.claimData) return state;
@@ -36,6 +41,19 @@ export const useClaimStore = create<ClaimState>((set) => ({
         ...state.claimData,
         processDetails: state.claimData.processDetails.filter(
           (node) => !('id' in node && node.id === id)
+        )
+      }
+    };
+  }),
+
+  updateNode: (title, newData) => set((state) => {
+    if (!state.claimData) return state;
+
+    return {
+      claimData: {
+        ...state.claimData,
+        processDetails: state.claimData.processDetails.map((node) => 
+          node.title === title ? ({ ...node, ...newData } as ProcessDetailType) : node
         )
       }
     };

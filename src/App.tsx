@@ -4,6 +4,7 @@ import { mockClaimData } from "./data/mockData";
 import ClaimTimeline from "./components/ClaimTimeline";
 import Sidebar from "./components/Sidebar";
 
+
 function App() {
   const { claimData, isLoading, setClaimData, addNode } = useClaimStore();
 
